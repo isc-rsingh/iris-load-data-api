@@ -1,0 +1,7 @@
+{
+    "objectscript.conn": {
+        "server": "iris-local",
+        "ns": "DATALOAD",
+        "active": true
+    }
+}

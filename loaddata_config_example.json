@@ -1,0 +1,46 @@
+{
+  "from": {
+    "file": {
+      "header": true,
+      "skip": 0,
+      "columnseparator": ","
+    },
+    "filepath": "/Users/rsingh/Downloads/dataexport.csv"
+  },
+  "tablename": "SQLUser.dataexport",
+  "verbose": 0,
+  "charset": "UTF-8",
+  "fields": [
+    {
+      "srcname": "care_site_id",
+      "type": "BIGINT",
+      "length": 0
+    },
+    {
+      "srcname": "care_site_name",
+      "type": "VARCHAR",
+      "length": "1"
+    },
+    {
+      "srcname": "place_of_service_concept_id",
+      "type": "BIGINT",
+      "length": 0,
+      "destdatatype": "INT"
+    },
+    {
+      "srcname": "location_id",
+      "type": "VARCHAR",
+      "length": "1"
+    },
+    {
+      "srcname": "care_site_source_value",
+      "type": "VARCHAR",
+      "length": "11"
+    },
+    {
+      "srcname": "place_of_service_source_value",
+      "type": "VARCHAR",
+      "length": "48"
+    }
+  ]
+}

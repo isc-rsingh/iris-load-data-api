@@ -1,0 +1,70 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "$id": "https://intersystems.com/schemas/loaddataoptions",
+    "title": "LOAD DATA options",
+    "description": "Options for InterSystems IRIS LOAD DATA SQL command",
+    "type": "object",
+    "properties": {
+        "from": {
+            "description": "Source options",
+            "type": "object", 
+            "properties": {
+                "file": {
+                    "description": "If source is a file",
+                    "type": "object",
+                    "properties": {
+                        "header": {
+                            "description": "Set to true (1) to indicate that the first line of the source file is a header row. Column names in this header can then be specified and used in a VALUES clause, if no COLUMNS clause is specified. For more details, see Load from File with Headers and Specify Options (https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=RSQL_loaddata#RSQL_loaddata_desc_options).",
+                            "type": "boolean",
+                            "default": "false"
+                        },
+                        "skip": {
+                            "description": "Specify the number of lines at the start of the file to skip. If header is set to true, then skip indicates the number of lines to skip in addition to the header.",
+                            "type": "integer",
+                            "default": "0"
+                        },
+                        "charset": {
+                            "description": "Specify the character set used to parse input data. Default: LOAD DATA uses the character set of the host operating system.",
+                            "type": "string"
+                        },
+                        "escapechar": {
+                            "description": "Specify the escape character used for literal values, such as column separator characters that are used within a column value.",
+                            "type": "string"
+                        },
+                        "columnseparator": {
+                            "description": "Specify the character used to separate columns in the source file.",
+                            "type": "string",
+                            "default": ","
+                        },
+                        "lineseparator": {
+                            "description": "Specify the line separator character. The value can be one of three options: \n, \n\r, or \r.",
+                            "type": "string",
+                            "default": "\n"
+                        }
+                    }
+                }
+            }
+        },
+        "into": {
+            "description": "Target options",
+            "type": "object", 
+            "properties": {
+                "jdbc": {
+                    "description": "TBD",
+                    "type": "object",
+                    "properties": {
+                        "threads": {
+                            "description": "The number of threads to parallelize the JDBC writer across. This option may be used even when not loading data from a JDBC source. Each thread feeds a single server process performing INSERT commands. If it is important that data is loaded into the table in the exact order it is defined in the table, you should specify “threads”:1. Default is $System.Util.NumberOfCPUs() - 2",
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "maxerrors": {
+            "description": "The maximum number of errors that may arise during the LOAD DATA command before the entire operation is determined to be a failure, closing a transaction and rolling back all changes.",
+            "type": "integer",
+            "default": "0"
+        }
+    }
+}
