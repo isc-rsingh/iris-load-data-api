@@ -1,8 +1,9 @@
 {
     "objectscript.conn": {
-        "server": "iris-local",
-        "ns": "DATALOAD",
-        "active": true
+      "server": "iris-local",
+      "ns": "DATALOAD",
+      "active": true
     },
     "objectscript.export.folder": "src/cls",
+    "angular.enable-strict-mode-prompt": false,
 }
