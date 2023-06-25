@@ -1,0 +1,17 @@
+<div *ngIf="showme else summary" class="row border rounded mb-3 p-3">
+  <h3>Destination table</h3>
+  <div class="col-10">
+    <!-- <label for="tablename">Schema.Tablename</label> -->
+    <input (change)="onNameChanged($event)" type="text" class="form-control" id="tablename" value="{{tablename}}">
+  </div>
+  <div class="col-2 d-flex justify-content-end">
+    <button (click)="onSetName()" type="button" class="btn btn-secondary btn-sm">Next</button>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="col-xs-12" class="row border rounded mb-3 p-3">
+    <div class="short-text">
+      Destination: {{tablename}}
+    </div>
+  </div>
+</ng-template>

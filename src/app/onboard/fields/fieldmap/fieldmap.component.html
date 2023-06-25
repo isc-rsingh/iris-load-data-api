@@ -1,0 +1,24 @@
+  <div class="row mb-3">
+    <div class="col-4">
+      <button type="button"
+        class="btn btn-outline-dark btn-sm">
+        {{ field.srcname }}
+      </button>
+    </div>
+    <div class="col-4">
+      <input (change)="onDestinationNameChanged($event)"
+        type="text" class="form-control"
+        value="{{field.srcname}}">
+    </div>
+    <div class="col-2">
+      <app-datatypes
+        [defaultDatatype]="field.type"
+        (datatypeDefined)="onDatatypeChanged($event)">
+      </app-datatypes>
+    </div>
+    <div class="col-2">
+      <input (change)="onLengthChanged($event)"
+        type="text" class="form-control"
+        value="{{field.length}}">
+    </div>
+  </div>

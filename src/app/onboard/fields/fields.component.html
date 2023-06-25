@@ -1,0 +1,31 @@
+<div *ngIf="showme else summary" class="row border rounded mb-3 p-3">
+  <div class="col-xs-12">
+    <h4>Field mapping</h4>
+    <div class="row mb-3">
+      <label class="col-4">source name</label>
+      <label class="col-4">target name</label>
+      <label class="col-2">data type</label>
+      <label class="col-2">length</label>
+      <!-- <label class="col-1">required</label>
+      <label class="col-1">unique</label> -->
+    </div>
+    <!-- repeat for each field -->
+    <div *ngFor="let field of fields">
+      <app-fieldmap [field]="field" (fieldChanged)="onFieldChanged($event)"></app-fieldmap>
+    </div>
+    <!-- end repeat -->
+    <div class="row mb-3">
+      <div class="col-xs-12 d-flex justify-content-end">
+        <button (click)="onLoadData()" type="button" class="btn btn-primary">Load CSV</button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="col-xs-12" class="row border rounded mb-3 p-3">
+    <div class="short-text">
+      Field mapping
+    </div>
+  </div>
+</ng-template>
+

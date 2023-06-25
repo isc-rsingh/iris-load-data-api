@@ -1,0 +1,6 @@
+<select class="form-select form-select-sm"
+  [(ngModel)]="defaultDatatype"
+  (change)="onDatatypeChanged($event)">
+  <option *ngFor="let datatype of datatypes"
+    [ngValue]="datatype">{{datatype}}</option>
+</select>

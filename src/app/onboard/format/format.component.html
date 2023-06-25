@@ -1,0 +1,50 @@
+<div class="row border rounded mb-3 p-3">
+  <div *ngIf="showme else summary" class="col-xs-12">
+    <h3>File format settings</h3>
+    <div class="row">
+      <div class="col-xs-12">
+        <label for="delimiterSelect">Delimiter</label>
+        <select [(ngModel)]="delimiter" class="form-select form-select-sm mb-3" id="delimiterSelect" aria-label="Delimiter">
+          <option selected value=",">,</option>
+          <option value="|">|</option>
+          <option value="\t">\t (tab)</option>
+        </select>
+        <label for="encodingSelect">Text encoding</label>
+        <select [(ngModel)]="textencoding" class="form-select form-select-sm mb-3" id="encodingSelect" aria-label="Text encoding">
+          <option selected value="UTF-8">UTF-8</option>
+          <option value="Unicode">Unicode</option>
+        </select>
+        <label for="headerSelect">Has header</label>
+        <select [(ngModel)]="header" class="form-select form-select-sm mb-3" id="headerSelect" aria-label="Has header">
+          <option selected value=true>Yes</option>
+          <option value=false>No</option>
+        </select>
+        <label for="dataSkipRowSelect">Skip rows (excluding header)</label>
+        <select [(ngModel)]="skip" class="form-select form-select-sm mb-3" id="dataSkiptRowSelect" aria-label="Data starts on row">
+          <option selected value=0>0</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+        </select>
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="d-flex justify-content-end">
+          <button (click)="onFormatChanged($event)" type="button" class="btn btn-outline-secondary btn-sm mx-2">Back</button>
+          <button (click)="onFormatChanged($event)" type="button" class="btn btn-secondary btn-sm">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #summary>
+    <div class="col-xs-12">
+      <div class="short-text">
+        Format settings:
+        delimiter ({{delimiter}}),
+        encoding ({{textencoding}}),
+        startrow ({{startrow}})
+      </div>
+    </div>
+  </ng-template>
+</div>

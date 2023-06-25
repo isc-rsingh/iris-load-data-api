@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Export generator="Cache" version="25">
-  <Document name="rsingh-load-data-api.ZPM">
+  <Document name="rsingh-load-data-app.ZPM">
     <Module>
-      <Name>rsingh-load-data-api</Name>
+      <Name>rsingh-load-data-app</Name>
       <Version>0.1.0</Version>
-      <Description>REST API for loading data into InterSystems IRIS 2023.x and above. Depends upon https://github.com/bdeboe/isc-sql-utils for introspecting CSV files</Description>
+      <Description>App for loading data into InterSystems IRIS 2023.x and above. Depends upon https://github.com/bdeboe/isc-sql-utils for introspecting CSV files</Description>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="rsingh.sqlutil.SqlUtil.cls"/>
@@ -25,6 +25,14 @@
         PasswordAuthEnabled="0"
         UnauthenticatedEnabled="1" 
         UseCookies="2"
+       />
+      <CSPApplication
+        Url="/csp/dataloadapp"
+        SourcePath="/dist/proto"
+        Directory="{$cspdir}/dataloadapp"
+        ServeFiles="1"
+        Recurse="1"
+        CookiePath="/csp/dataloadapp/"
        />
     </Module>
   </Document>

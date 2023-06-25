@@ -1,0 +1,17 @@
+<div *ngIf="showme else summary" class="row border rounded mb-3 p-3">
+  <h3>Source file</h3>
+  <div class="col-10">
+    <!-- <label for="sourcepath">File path</label> -->
+    <input (change)="onPathChanged($event)" type="text" class="form-control" id="sourcepath" placeholder="Enter source file path" value="{{sourcepath}}">
+  </div>
+  <div class="col-2 d-flex justify-content-end">
+    <button (click)="onSetPath()" type="button" class="btn btn-secondary btn-sm">Next</button>
+  </div>
+</div>
+<ng-template #summary>
+  <div class="col-xs-12" class="row border rounded mb-3 p-3">
+    <div class="short-text">
+      Source path: {{sourcepath}}
+    </div>
+  </div>
+</ng-template>

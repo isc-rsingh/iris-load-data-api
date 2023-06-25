@@ -1,0 +1,11 @@
+<div class="container">
+    <app-sourcefile [showme]="showSource" [sourcepath]="config.from.filepath" (pathDefined)="onFilePathChanged($event)"></app-sourcefile>
+    <app-format [showme]="showFormat" (formatDefined)="onFormatChanged($event)"></app-format>
+    <app-target [showme]="showDestination" [tablename]="config.tablename" (nameDefined)="onTableNameChanged($event)"></app-target>
+    <app-fields
+      [showme]="showFields"
+      [fields]="config.fields"
+      (fieldsChanged)="onFieldsChanged($event)"
+      (fieldsDone)="onLoadData($event)">
+    </app-fields>
+</div>
