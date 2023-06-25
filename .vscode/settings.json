@@ -3,5 +3,6 @@
         "server": "iris-local",
         "ns": "DATALOAD",
         "active": true
-    }
+    },
+    "objectscript.export.folder": "src/cls",
 }
