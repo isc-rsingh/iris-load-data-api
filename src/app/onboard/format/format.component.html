@@ -5,9 +5,10 @@
       <div class="col-xs-12">
         <label for="delimiterSelect">Delimiter</label>
         <select [(ngModel)]="delimiter" class="form-select form-select-sm mb-3" id="delimiterSelect" aria-label="Delimiter">
-          <option selected value=",">,</option>
-          <option value="|">|</option>
-          <option value="\t">\t (tab)</option>
+          <option selected value=",">comma</option>
+          <option value="t">tab</option>
+          <option value="|">| (pipe)</option>
+          <option value=";">semi-colon</option>
         </select>
         <label for="encodingSelect">Text encoding</label>
         <select [(ngModel)]="textencoding" class="form-select form-select-sm mb-3" id="encodingSelect" aria-label="Text encoding">

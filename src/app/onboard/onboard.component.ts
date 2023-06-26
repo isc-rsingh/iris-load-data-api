@@ -44,6 +44,11 @@ export class OnboardComponent {
     this.showFormat = true; // open up the format component
   }
   onFormatChanged(format: any) {
+    // console.log('onboard.onFormatChanged columnseparator: ' + format.delimiter);
+    this.config.from.file.columnseparator = format.delimiter;
+    if (this.config.from.file.columnseparator == 't')
+      this.config.from.file.columnseparator = '\t';
+
     this.config.from.file.header = format.header;
     this.config.from.file.skip = format.skip;
     this.config.charset = format.textencoding;
@@ -52,6 +57,8 @@ export class OnboardComponent {
   }
   onTableNameChanged(tablename: string) {
     this.config.tablename = tablename;
+    console.log('POSTING: ')
+    console.log(this.config);
     this.http.post(environment.baseURL+'/columns', this.config).subscribe((data: any) => {
       this.config = Object.assign(this.config, data);
       this.showDestination = false; // collapse the destination component
