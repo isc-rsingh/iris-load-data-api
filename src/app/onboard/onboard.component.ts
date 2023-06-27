@@ -13,7 +13,7 @@ export class OnboardComponent {
     "from":
     {
       "file": {
-        "header": false,
+        "header": true,
         "skip": 0,
         "columnseparator": ","
       },
@@ -49,6 +49,7 @@ export class OnboardComponent {
     if (this.config.from.file.columnseparator == 't')
       this.config.from.file.columnseparator = '\t';
 
+    // this.config.from.file.header = format.header=='true' ? true : false
     this.config.from.file.header = format.header;
     this.config.from.file.skip = format.skip;
     this.config.charset = format.textencoding;

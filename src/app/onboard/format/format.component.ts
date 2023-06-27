@@ -13,8 +13,8 @@ export class FormatComponent {
   public escapechar = '\\';
   public quotechar = '"';
   public textencoding = 'utf-8';
-  public header = true;
-  public skip = 0;
+  public header:boolean = true;
+  public skip:number = 0;
   @Input() showme;
   @Output() formatDefined = new EventEmitter<any>();
 
