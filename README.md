@@ -4,7 +4,7 @@ Application for loading data into InterSystems IRIS from a CSV file. Includes an
 
 ## Application Installation
 
-- Edit src/environments/environments.ts to match your install of the <a href="https://github.com/isc-rsingh/iris-load-data-api">data loading REST API</a>
+- Edit `src/environments/environments.ts` to match your install of the <a href="https://github.com/isc-rsingh/iris-load-data-api">data loading REST API</a>
 - Execute `ng build` (if needed, <a href="https://angular.io/guide/setup-local">set up Angular</a>)
 - If installing in IRIS...
   - go into dist/proto folder and make sure base reads as follows:

@@ -60,7 +60,7 @@ export class OnboardComponent {
     this.config.tablename = tablename;
     console.log('POSTING: ')
     console.log(this.config);
-    this.http.post(environment.baseURL+'/columns', this.config).subscribe((data: any) => {
+    this.http.post(environment.dbURL+'/columns', this.config).subscribe((data: any) => {
       this.config = Object.assign(this.config, data);
       this.showDestination = false; // collapse the destination component
       this.showFields = true; // open up the fields component
@@ -74,10 +74,10 @@ export class OnboardComponent {
   onLoadData(event: any) {
     console.log('onLoadData');
     console.log(this.config);
-    this.http.post(environment.baseURL+'/createtable', this.config).subscribe((data: any) => {
+    this.http.post(environment.dbURL+'/createtable', this.config).subscribe((data: any) => {
       console.log("Create table response.");
       console.log(data);
-      this.http.post(environment.baseURL+'/load', this.config).subscribe((data: any) => {
+      this.http.post(environment.dbURL+'/load', this.config).subscribe((data: any) => {
         console.log("Load data response.");
         console.log(data);
       });

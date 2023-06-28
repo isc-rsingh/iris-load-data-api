@@ -1,3 +1,3 @@
 export const environment = {
-  baseURL: 'http://localhost:52771/csp/datasqlutil'
+  dbURL: 'http://localhost:52771/csp/dataloadapi'
 };
