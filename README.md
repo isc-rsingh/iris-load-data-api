@@ -1,6 +1,8 @@
 # IRIS Data Loading app and REST API
 
-Application for loading data into InterSystems IRIS from a CSV file. Includes an Angular application and a data loading REST API that uses <a href="https://github.com/bdeboe/isc-sql-utils">IRIS SQL Utilities</a> for introspecting CSV files.
+This application facilitates CSV file input into IRIS and IRIS for Health, providing a front-end client to the LOAD DATA SQL command. Takes as input a CSV file, infers data types, and allows the user to edit column names and data types.
+
+The repository includes an Angular application and a data loading REST API that uses <a href="https://github.com/bdeboe/isc-sql-utils">IRIS SQL Utilities</a> for introspecting CSV files.
 
 > **Warning**
 > This only works for CSV files on the same file system as IRIS itself. Uploading the CSV file to a remote server is a desired future feature.
