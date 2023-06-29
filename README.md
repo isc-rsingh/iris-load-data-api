@@ -2,6 +2,9 @@
 
 Application for loading data into InterSystems IRIS from a CSV file. Includes an Angular application and a data loading REST API that uses <a href="https://github.com/bdeboe/isc-sql-utils">IRIS SQL Utilities</a> for introspecting CSV files.
 
+> **Warning**
+> This only works for CSV files on the same file system as IRIS itself. Uploading the CSV file to a remote server is a desired future feature.
+
 ## Application Installation
 
 - Edit `src/environments/environments.ts` to match your install of the <a href="https://github.com/isc-rsingh/iris-load-data-api">data loading REST API</a>
