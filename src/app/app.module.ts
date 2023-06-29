@@ -13,6 +13,7 @@ import { FieldmapComponent } from './onboard/fields/fieldmap/fieldmap.component'
 import { DatatypesComponent } from './onboard/fields/fieldmap/datatypes/datatypes.component';
 import { DatapreviewComponent } from './datapreview/datapreview.component';
 import { FormsModule } from '@angular/forms';
+import { InfoComponent } from './onboard/info/info.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FieldmapComponent,
     DatatypesComponent,
-    DatapreviewComponent
+    DatapreviewComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

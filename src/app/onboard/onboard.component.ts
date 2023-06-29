@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environments';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-onboard',
@@ -22,10 +23,12 @@ export class OnboardComponent {
     "tablename": 'SQLUser.newtable',
     "verbose": 0
   };
+  infoMessage: any = {"message": "",status:200,statusText:"OK"};
   showSource = true;
   showFormat = false;
   showDestination = false;
   showFields = false;
+  showInfo = false;
 
   constructor(private http: HttpClient) { }
 
@@ -66,21 +69,43 @@ export class OnboardComponent {
       this.showFields = true; // open up the fields component
     });
   }
+
   onFieldsChanged(newfields: any) {
     this.config.fields = newfields;
     // console.log('onboard.onFieldsChanged');
     // console.log(this.config.fields);
   }
+
   onLoadData(event: any) {
     console.log('onLoadData');
     console.log(this.config);
-    this.http.post(environment.dbURL+'/createtable', this.config).subscribe((data: any) => {
-      console.log("Create table response.");
-      console.log(data);
-      this.http.post(environment.dbURL+'/load', this.config).subscribe((data: any) => {
-        console.log("Load data response.");
-        console.log(data);
-      });
+    this.http.post(environment.dbURL+'/createtable', this.config)
+      .subscribe({
+          next: (data: any) => {
+            console.log("Create table response.");
+            console.log(data);
+            this.http.post(environment.dbURL+'/load', this.config).subscribe({
+              next: (data: any) => {
+              console.log("Load data response.");
+              console.log(data);
+              },
+              error: (err) => {
+                this.handleError(err);
+              }
+            });
+          },
+          error: (err) => {
+            this.handleError(err);
+          }
     });
+  }
+
+  handleError(err: any) {
+    this.infoMessage = {
+      "message": "ERROR: " + err.error.error,
+      "status": err.status,
+      "statusText": err.statusText
+    }
+    this.showInfo = true;
   }
 }

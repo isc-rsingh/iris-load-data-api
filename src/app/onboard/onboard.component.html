@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row align-items-start">
     <div class="col-7 ">
-      <app-info [showme]="showInfo"></app-info>
+      <app-info [showme]="showInfo" [msg]="infoMessage"></app-info>
       <!-- <app-info [showme]="showInfo" (infoDefined)="onInfoChanged($event)"></app-info> -->
       <app-sourcefile [showme]="showSource" [sourcepath]="config.from.filepath" (pathDefined)="onFilePathChanged($event)"></app-sourcefile>
       <app-format [showme]="showFormat" (formatDefined)="onFormatChanged($event)"></app-format>
