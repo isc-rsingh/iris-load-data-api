@@ -28,7 +28,7 @@
        />
       <CSPApplication
         Url="/csp/dataloadapp"
-        SourcePath="/dist/proto"
+        SourcePath="/proto"
         Directory="{$cspdir}/dataloadapp"
         ServeFiles="1"
         Recurse="1"
