@@ -16,7 +16,7 @@ XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
 </Routes>
 }
 
-/// Returns a list of column names with data types using 
+/// Returns a list of column names with data types using
 /// https://github.com/bdeboe/isc-sql-utils to infer the schema.
 /// Example body:
 /// {
@@ -35,7 +35,7 @@ ClassMethod InferColumnList()
     if obj.%Get("from").%IsDefined("filepath") {
         set path = obj.%Get("from").%Get("filepath")
         #; set params = %JSON.Formatter.FormatToString(%request.Content, .params)
-        #; write { "params": (params)}.%ToJSON() 
+        #; write { "params": (params)}.%ToJSON()
         set collist = ##class(bdb.sql.InferSchema).InferColumnList(path, obj)
         #; make the column listing into a nice JSON object
         set resp = []
@@ -66,8 +66,8 @@ ClassMethod InferColumnList()
     Quit $$$OK
 }
 
-/// Munges a JSON configuration file into an InterSystems IRIS 
-/// <code><a href="https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=RSQL_loaddata">LOAD DATA</a></code> 
+/// Munges a JSON configuration file into an InterSystems IRIS
+/// <code><a href="https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=RSQL_loaddata">LOAD DATA</a></code>
 /// statement and executes it.
 ClassMethod LoadData()
 {
@@ -78,7 +78,7 @@ ClassMethod LoadData()
         set path = obj.%Get("from").%Get("filepath")
         set cmd = "LOAD BULK DATA FROM FILE '"_path_"'"
         set cmd = cmd_" COLUMNS ("_..getColumns(fields, 1, 0)_")"
-        set cmd = cmd_" INTO "_tablename_" ("_..getColumns(fields, 0, 1)_")" 
+        set cmd = cmd_" INTO "_tablename_" ("_..getColumns(fields, 0, 1)_")"
         set cmd = cmd_" VALUES ("_..getColumns(fields, 0, 0)_")"
         set cmd = cmd_" USING '"_obj.%ToJSON()_"'"
         #; write {"sql": (cmd)}.%ToJSON()
@@ -86,6 +86,7 @@ ClassMethod LoadData()
         if rs.%SQLCODE '= 0 {
             set %response.Status = ..#HTTP500INTERNALSERVERERROR
             write {"error": (rs.%Message)}.%ToJSON()
+            #; write {"error": {"error": (rs.%Message), "status": "internal server error", "statusText": "internal server error"}}.%ToJSON()
         }
         else {
             write {"response": { "status": 0, "message": ("Data loaded into "_tablename)}}.%ToJSON()
@@ -98,7 +99,7 @@ ClassMethod LoadData()
     Quit $$$OK
 }
 
-/// Munges the <code>fields</code> object of a JSON configuration file into an 
+/// Munges the <code>fields</code> object of a JSON configuration file into an
 /// InterSystems IRIS <code>CREATE TABLE</code> statement and executes it.
 ClassMethod CreateTable()
 {
@@ -115,7 +116,9 @@ ClassMethod CreateTable()
         set rs = ##class(%SQL.Statement).%ExecDirect(, sql)
         if rs.%SQLCODE '= 0 {
             set %response.Status = ..#HTTP500INTERNALSERVERERROR
+            set m = rs.%Message
             write {"error": (rs.%Message)}.%ToJSON()
+            #; write {"error": {"error": (m), "status": (rs.%SQLCODE), "statusText": "internal server error"}}.%ToJSON()
             #; write {"sql": (sql)}.%ToJSON()
         }
         else {
@@ -129,18 +132,18 @@ ClassMethod CreateTable()
     Quit $$$OK
 }
 
-/// Transforms the fields object of a JSON configuration file into 
+/// Transforms the fields object of a JSON configuration file into
 /// a comma-separated list of column names and optional, data types with constraints.
 ClassMethod getColumns(fields As %DynamicObject, includetype = 0, dest = 0) As %String
 {
     set colspecs = ""
     set i = fields.%GetIterator()
     while i.%GetNext(.key, .value) {
-        set colspec = ", " 
+        set colspec = ", "
         set name = value.%Get("srcname")
         if dest {
             if value.%IsDefined("destname") set name = value.%Get("destname")
-        } 
+        }
         set colspec = colspec_name
         if includetype {
             set type = value.%Get("type")

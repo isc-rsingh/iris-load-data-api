@@ -10,11 +10,11 @@ Application for loading data into InterSystems IRIS from a CSV file. Includes an
 - Edit `src/environments/environments.ts` to match your install of the <a href="https://github.com/isc-rsingh/iris-load-data-api">data loading REST API</a>
 - Execute `ng build` (if needed, <a href="https://angular.io/guide/setup-local">set up Angular</a>)
 - If installing in IRIS...
-  - go into dist/proto folder and make sure base reads as follows:
+  - look at `index.html` in the dist/proto folder and make sure base reads as follows:
   ```
   <base href="/csp/dataloadapp/">
   ```
-  - in an IRIS session, run `zpm install <path to this directory>`, or set up a CSP application in IRIS and copy all files in the `dist/proto` directory to that location.
+  - in an IRIS session, run `zpm load <path to this directory>`, or set up a CSP application in IRIS and copy all files in the `dist/proto` directory to that location.
 - If installing in an external web server...
   - copy all files in the `dist/proto` directory to the web server
 

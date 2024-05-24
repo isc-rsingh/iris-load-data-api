@@ -1,9 +1,11 @@
 {
     "objectscript.conn": {
       "server": "iris-local",
-      "ns": "DATALOAD",
+      "ns": "USER",
       "active": true
     },
     "objectscript.export.folder": "src/cls",
+    "objectscript.unitTest.relativeTestRoots": ["src/cls"],
     "angular.enable-strict-mode-prompt": false,
+    "sqltools.connections": [],
 }
