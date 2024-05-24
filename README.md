@@ -1,6 +1,8 @@
 # IRIS Data Loading app and REST API
 
-Application for loading data into InterSystems IRIS from a CSV file. Includes an Angular application and a data loading REST API that uses <a href="https://github.com/bdeboe/isc-sql-utils">IRIS SQL Utilities</a> for introspecting CSV files.
+This application facilitates CSV file input into IRIS and IRIS for Health, providing a front-end client to the LOAD DATA SQL command. Takes as input a CSV file, infers data types, and allows the user to edit column names and data types.
+
+The repository includes an Angular application and a data loading REST API that uses <a href="https://github.com/bdeboe/isc-sql-utils">IRIS SQL Utilities</a> for introspecting CSV files.
 
 > **Warning**
 > This only works for CSV files on the same file system as IRIS itself. Uploading the CSV file to a remote server is a desired future feature.
@@ -111,4 +113,29 @@ Example body:
     }
   ]
 }
+```
+## Docker
+### Prerequisites
+Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
+### Installation
+Clone/git pull the repo into any local directory
+```
+$ git clone https://github.com/rcemper/DK_iris-load-data-api.git
+```
+To build and start the container run:
+```
+$ docker compose up -d --build && docker compose logs -f
+```
+To open IRIS Terminal do:
+```
+$ docker-compose exec iris iris session iris
+USER>
+```
+or using **WebTerminal**
+```
+http://localhost:42773/terminal/
+```
+To access IRIS System Management Portal
+```
+http://localhost:42773/csp/sys/UtilHome.csp
 ```
