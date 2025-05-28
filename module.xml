@@ -3,7 +3,7 @@
   <Document name="rsingh-load-data-app.ZPM">
     <Module>
       <Name>rsingh-load-data-app</Name>
-      <Version>0.1.0</Version>
+      <Version>0.1.1</Version>
       <Description>App for loading data into InterSystems IRIS 2023.x and above. Depends upon https://github.com/bdeboe/isc-sql-utils for introspecting CSV files</Description>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
