@@ -2,7 +2,7 @@
     "objectscript.conn": {
       "server": "iris-local",
       "ns": "USER",
-      "active": true
+      "active": false
     },
     "objectscript.export.folder": "src/cls",
     "objectscript.unitTest.relativeTestRoots": ["src/cls"],
