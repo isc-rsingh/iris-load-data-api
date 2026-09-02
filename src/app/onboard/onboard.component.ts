@@ -4,6 +4,7 @@ import { environment } from '../../environments/environments';
 import { catchError, throwError } from 'rxjs';
 
 @Component({
+  standalone: false,
   selector: 'app-onboard',
   templateUrl: './onboard.component.html',
   styles: [
