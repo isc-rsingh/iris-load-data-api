@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-sourcefile',
   templateUrl: './sourcefile.component.html',
   styles: [
